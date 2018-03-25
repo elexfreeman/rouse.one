@@ -20,7 +20,7 @@ router.get('/', function (req, res, next) {
     return Products.getPopular();
 
   }).then((popProducts) => {
-    res.render('main_page', {
+    res.render('main_page/index.ejs', {
       title: title
       , description: description
       , keywords: keywords

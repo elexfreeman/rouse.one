@@ -80,20 +80,27 @@ module.exports = {
           fallback: 'style-loader',
           use: ["css-loader?-minimize", 'sass-loader']
         })
+      },
+      {
+        test: /.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'fonts/',    // where the fonts will go
+            publicPath: '../'       // override the default path
+          }
+        }]
       }
     ]
   },
 
-
-
-
-
-
   plugins: [
     new ExtractTextPlugin({
       filename: 'styles.css',
-      allChunks: true,
-      disable: true
+      allChunks: true
+       /*закментить при билде*/
+      ,disable: true
     }),
     //  new webpack.optimize.CommonsChunkPlugin({
     //   name: "common"

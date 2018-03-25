@@ -47,6 +47,10 @@ $border-gray: #ddd;
 @import './footer.scss';
 @import './bread.scss';
 
+$fa-font-path: "../../node_modules/font-awesome/fonts";
+@import '../../node_modules/font-awesome/scss/font-awesome.scss';
+
+
 .center-container-wrap-g {
   background-color: $gray-bg;
   padding-top: 2rem;
@@ -59,7 +63,7 @@ $border-gray: #ddd;
 }
 
 .center-container-wrap-w {
-  background-color: #fff;  
+  background-color: #fff;
   padding-bottom: 2rem;
   min-height: 70vh;
   overflow: hidden;

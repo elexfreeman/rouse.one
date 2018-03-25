@@ -6,8 +6,8 @@ conn_params = {
     connectionLimit : 100,
     host: 'localhost',
     user: 'root',
-    password: 'hfgrtTGF54',
-    database: 'alisashop'
+    password: '',
+    database: 'rouseone'
 };
 /*сам коннект*/
 var pool = mysql.createPool(conn_params);
