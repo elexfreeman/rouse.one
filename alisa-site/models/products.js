@@ -66,6 +66,7 @@ function get(id) {
 }
 
 function getByUrl(url) {
+  
     return new Promise(function (resolve, reject) {
 
         let sql = "select * from products where (url = ?) and (deleted = 0)";

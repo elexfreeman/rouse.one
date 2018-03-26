@@ -46,10 +46,8 @@ $border-gray: #ddd;
 @import './blog.scss';
 @import './footer.scss';
 @import './bread.scss';
-
 $fa-font-path: "../../node_modules/font-awesome/fonts";
 @import '../../node_modules/font-awesome/scss/font-awesome.scss';
-
 
 .center-container-wrap-g {
   background-color: $gray-bg;
@@ -72,6 +70,6 @@ $fa-font-path: "../../node_modules/font-awesome/fonts";
 
   .center-container {
     margin: 0 auto;
-    padding-top:2rem;
+    padding-top: 2rem;
   }
 }

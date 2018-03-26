@@ -1,0 +1,70 @@
+<% include ../base/head %>
+  <% include ../components/menu/menu_top %>
+
+    <div class="product-page">
+      <div class="center-container-wrap-g">
+        <div class="container grid-xl center-container">
+          <div class="columns">
+            <div class="col-menu-left column col-xs-12 col-sm-12 col-lg-4 col-xl-4 col-3">
+              <% include ../components/menu/menu_left %>
+            </div>
+            <div class="column col-xs-12 col-md-12 col-sm-12 col-lg-8 col-xl-8 col-9">
+
+              <div class="columns">
+                <div class="product-img column col-xs-12 col-sm-12 col-lg-4 col-xl-4 col-4">
+                    <div id="root" img='<%=product.main_img %>'>
+                        <img className="img-responsive" src='<%=product.main_img %>' alt='rouse.one - <%=product.caption %>'>
+                    </div>
+                </div>
+                <div class="product-info column col-xs-12 col-sm-12 col-lg-8 col-xl-8 col-8">
+                  <div class="info">
+                    <h1 class="caption"><%=product.caption %></h1>
+                    <div class="availability">Доступность:<span>На складе</span></div>
+                    <hr>
+                    <div class="only_left">Осталось:<span>100 шт.</span></div>
+                    <div class="price">20 000 руб.</div>
+                    <div class="description">
+                      <%=product.caption %>
+                    </div>
+                    <div class="product-order">
+                      <div class="price">Итого: 20 200 руб.</div>
+                      <div class="divider"></div>
+                      <div class="columns">
+                        <div class="form-horizontal column col-xs-6 col-md-6 col-sm-6 col-lg-6 col-xl-6 col-6">
+                          <div class="form-group">
+                            <div class="col-4 col-xs-6 col-md-6 col-lg-6 col-sm-12"><label class="form-label">Кол-во:</label></div>
+                            <div class="col-4 col-xs-6 col-md-4 col-lg-6 col-sm-12"><input type="number" class="form-input"></div>
+                          </div>
+                        </div>
+                        <div class="to_cart column col-xs-12 col-sm-12 col-lg-6 col-xl-6 col-6"><button class="btn btn-primary  btn-lg"><i class="fa fa-cart-plus" aria-hidden="true"></i>&nbsp; В корзину</button></div>
+                      </div>
+                      <div class="divider"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="details column col-xs-12">
+                  <div class="base-head">Детали</div>
+                  <div>
+                      <%=product.caption %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class='center-container-wrap-w'>
+        <div class="container grid-xl center-container">
+          <div class="base-head">Популярные среди женшин вашего города</div>
+
+          <% include ../components/blog_rows %>
+            <% include ../base/footer %>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="common.js" charset="utf-8"></script>
+    <script type="text/javascript" src="product.js" charset="utf-8"></script>
+
+    <% include ../base/bottom %>

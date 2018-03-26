@@ -5,7 +5,8 @@ const webpack = require('webpack');
 module.exports = {
   context: __dirname + "/src",
   entry: {
-    bundle: './index.jsx',
+    bundle: './index.jsx'
+    ,product: './product.jsx'
     //styles: './main.scss'
   },
   output: {
@@ -102,9 +103,9 @@ module.exports = {
        /*закментить при билде*/
       ,disable: true
     }),
-    //  new webpack.optimize.CommonsChunkPlugin({
-    //   name: "common"
-    // }),
+      new webpack.optimize.CommonsChunkPlugin({
+       name: "common"
+     }),
     new webpack.ProvidePlugin({
       $: "jquery/dist/jquery.min.js",
       jQuery: "jquery/dist/jquery.min.js",

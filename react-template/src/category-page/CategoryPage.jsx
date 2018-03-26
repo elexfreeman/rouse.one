@@ -5,12 +5,15 @@ import BaseHead from '../base/BaseHead';
 import Products from '../products/Products';
 import BlogRows from '../blog/BlogRows';
 import Footer from '../footer/Footer';
+import Bread from '../base/Bread';
 
 const CategoryPage = () => {
 
   return (<div className="category-page">
   <div className="center-container-wrap-g">
+
     <div className="container grid-xl center-container">
+      <Bread caption={'Декоративная косметика'}/>
       <div className="columns">
         <div className="col-menu-left column col-xs-12 col-sm-12 col-lg-4 col-xl-4 col-3">
           <MenuLeft/>

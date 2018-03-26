@@ -59,12 +59,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/category/*', category);
-app.use('/product/*', product);
+
 app.use('/about', about);
 app.use('/admin', admin);
 app.use('/admin/categories/', admin_categories);
 app.use('/admin/products/', admin_products);
 app.use('/admin/imgUploader/', imgUploader);
+
+app.use('/*', product);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

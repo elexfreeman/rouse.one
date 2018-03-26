@@ -25,7 +25,7 @@ router.get('/', function (req, res, next) {
       , description: description
       , keywords: keywords
       , categories: categories
-      , popProducts: popProducts
+      , products: popProducts
     });
   });
 

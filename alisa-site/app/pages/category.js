@@ -30,7 +30,7 @@ router.get('/', function (req, res, next) {
         let keywords = '';
         category.products = categoryProducts;
 
-        res.render('category', {
+        res.render('category_page/index', {
             title: title
             , description: description
             , keywords: keywords
