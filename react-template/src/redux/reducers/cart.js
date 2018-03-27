@@ -1,4 +1,4 @@
-const initialState = [null,1];
+const initialState = [0];
 
 export default function cart(state = initialState, action) {
   if (action.type === 'ADD') {
@@ -14,5 +14,5 @@ export default function cart(state = initialState, action) {
       action.payload
     ];
   }
-  return cart;
+  return state;
 }

@@ -19,7 +19,7 @@ render(
   <Provider store={store}>
     <div className='product-page'>
       <div className='product-info container'>
-        <ProductOrder productId={1}  price={200} />
+        <ProductOrder productId={5}  price={200} />
       </div>
     </div>
 </Provider>, document.getElementById('cart'));
