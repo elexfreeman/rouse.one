@@ -1,18 +1,19 @@
-const initialState = [0];
+let tmp = window.localStorage.getItem('cart');
+if (tmp == null) {
+  tmp = [];
+} else {
+  tmp = JSON.parse(tmp)
+}
+
+const initialState = [tmp];
 
 export default function cart(state = initialState, action) {
-  if (action.type === 'ADD') {
-    return [
-      ...state,
-      action.payload
-    ];
-  } else if (action.type === 'DELETE') {
+    if (action.type === 'ADD_CART') {
+        return [
+            action.payload
+        ];
+    } else if (action.type === 'DELETE') {
+        return state;
+    }
     return state;
-  } else if (action.type === 'CHANGE_COUNT') {
-    return [
-    state,
-      action.payload
-    ];
-  }
-  return state;
 }
