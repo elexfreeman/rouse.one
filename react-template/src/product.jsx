@@ -6,30 +6,32 @@ import ProductControler from './controlers/ProductControler';
 
 import ProductOrder from './cart/ProductOrder';
 import CartButton from './cart/CartButton';
+import ProductOrderCategory from './cart/ProductOrderCategory';
 
 import store from './redux/store';
 
 import './styles/main.scss';
 
-
-
-render(
-  <Provider store={store}>
-    <div className='product-page'>
-      <div className='product-info container'>
-        <CartButton productId={5}  price={200} />
-      </div>
+render(<Provider store={store}>
+  <div className='product-page'>
+    <div className='product-info container'>
+      <CartButton productId={5} price={200}/>
     </div>
-  </Provider>, document.getElementById('cart_button'));
+  </div>
+</Provider>, document.getElementById('cart_button'));
 
-
-render(
-  <Provider store={store}>
-    <div className='product-page'>
-      <div className='product-info container'>
-        <ProductOrder productId={5}  price={200} />
-        <ProductOrder productId={1}  price={200} />
-        <ProductOrder productId={2}  price={200} />
-      </div>
+render(<Provider store={store}>
+  <div className='product-page'>
+    <div className='product-info container'>
+      <ProductOrder productId={5} price={200}/>
+      <ProductOrder productId={1} price={200}/>
+      <ProductOrder productId={2} price={200}/>
     </div>
-  </Provider>, document.getElementById('cart'));
+  </div>
+</Provider>, document.getElementById('cart'));
+
+Array.prototype.forEach.call(document.getElementsByClassName('product_order_category'), (el) => {
+  render(<Provider store={store}>
+    <ProductOrderCategory productId={el.getAttribute('product_id')}/>
+  </Provider>, el)
+})

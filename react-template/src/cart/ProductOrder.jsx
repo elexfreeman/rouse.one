@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 import Summa from './Summa';
+import CommitModal from './CommitModal';
 
 import {cartAdd, cartGetAll} from './Cart';
 
@@ -11,6 +12,7 @@ class ProductOrder extends Component {
     super(props);
     this.state = {
       count: '1'
+      ,modalVisible: false
     };
     this.handlCountChange = this.handlCountChange.bind(this);
     this.addCart = this.addCart.bind(this);
@@ -31,6 +33,11 @@ class ProductOrder extends Component {
       count: parseInt(this.state.count),
       productId: this.props.productId
     });
+
+    this.setState({modalVisible: true});
+    setTimeout(() =>{
+      this.setState({modalVisible: false});
+    }, 800)
   }
 
   render() {
@@ -58,6 +65,7 @@ class ProductOrder extends Component {
         </div>
       </div>
       <div className="divider"></div>
+      <CommitModal visible={this.state.modalVisible} />
     </div>)
   };
 

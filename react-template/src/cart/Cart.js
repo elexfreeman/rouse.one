@@ -73,7 +73,7 @@ export function cartRemove(productId) {
     if (tItem == null) {
         return false
     } else {
-        cart.splice(tItem.productId, 1);
+        cart.splice(tItem, 1);
         saveState();
         return true;
     }

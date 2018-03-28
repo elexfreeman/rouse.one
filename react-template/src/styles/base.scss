@@ -7,6 +7,10 @@
   margin-bottom: 1rem;
 }
 
+.btn:hover{
+      background: $btn-hover;
+}
+
 @media (max-width: 768px) {
 
   .col-menu-left{

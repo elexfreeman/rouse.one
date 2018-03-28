@@ -4,6 +4,9 @@ $gray-bg: #f5f6f7;
 $gray-color: #99a4ab;
 $primary-bg: #dbf0f3;
 $border-gray: #ddd;
+
+$btn-hover: #f2feff;
+
 @mixin transition($transition...) {
   -moz-transition: $transition;
   -o-transition: $transition;
