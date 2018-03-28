@@ -38,13 +38,13 @@ class CartButtonModal extends Component {
           </div>
           <div className="modal-body">
             <div className="content">
-              
+
               <table className="table table-striped">
                 <thead>
                   <tr>
-                    <th>If</th>
-                    <th>ID</th>
-                    <th>ID</th>
+                    <th>Id</th>
+                  <th>p_ID</th>
+
                   </tr>
                 </thead>
                 <tbody>

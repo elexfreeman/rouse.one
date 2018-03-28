@@ -12,7 +12,7 @@ class CartButton extends Component {
       count: 0
       ,modalVisible: ''
     }
-    
+
     this.cartCount = this.cartCount.bind(this);
     this.onCloseModal = this.onCloseModal.bind(this);
     this.onModalOpen = this.onModalOpen.bind(this);
@@ -40,10 +40,11 @@ class CartButton extends Component {
 
   render() {
     return (<span>
+        <CartButtonModal modalVisible={this.state.modalVisible} onClose={this.onCloseModal} />
       <button onClick={this.onModalOpen} className="btn-cart btn input-group-btn btn-lg badge" data-badge={this.cartCount()}>
         <i className="fa fa-shopping-cart" aria-hidden="true"></i>
       </button>
-      <CartButtonModal modalVisible={this.state.modalVisible} onClose={this.onCloseModal} />
+
     </span>)
   }
 

@@ -16,16 +16,15 @@ render(<Provider store={store}>
       <CartButton />
 </Provider>, document.getElementById('cart_button'));
 
-//// TODO: Сделать привязку с атрибутами
-render(<Provider store={store}>
-  <div className='product-page'>
-    <div className='product-info container'>
-      <ProductOrder productId={5} price={200}/>
-      <ProductOrder productId={1} price={200}/>
-      <ProductOrder productId={2} price={200}/>
-    </div>
-  </div>
-</Provider>, document.getElementById('cart'));
+// render(<Provider store={store}>
+//   <div className='product-page'>
+//     <div className='product-info container'>
+//       <ProductOrder productId={5} price={200}/>
+//       <ProductOrder productId={1} price={200}/>
+//       <ProductOrder productId={2} price={200}/>
+//     </div>
+//   </div>
+// </Provider>, document.getElementById('cart'));
 
 let products = document.getElementsByClassName('product_order_category');
 console.log('Products', products);

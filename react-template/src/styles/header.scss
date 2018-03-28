@@ -2,6 +2,12 @@ header {
   padding: 20px;
   border-bottom: 1px solid #ddd;
 
+  #cart_button {
+      .modal-header{
+        text-align: left;
+      }
+  }
+
   .btn-group {
     .btn {
       &:hover {

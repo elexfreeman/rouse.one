@@ -21,7 +21,10 @@ class MenuTop extends Component {
           </div>
 
           <div className="column col-xs-9 col-sm-4 col-md-4 col-lg-2 text-right">
-            <CartButton/>
+            <span>
+              <CartButton/>
+            </span>
+
             <MenuButton/>
           </div>
         </div>
