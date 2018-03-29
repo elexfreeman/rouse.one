@@ -24,6 +24,8 @@ let category = require('./app/pages/category');
 let product = require('./app/pages/product');
 let about = require('./app/pages/about');
 
+let cart = require('./app/cart');
+
 
 const cors = require('cors');
 
@@ -59,6 +61,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/category/*', category);
+app.use('/cart', cart);
 
 app.use('/about', about);
 app.use('/admin', admin);

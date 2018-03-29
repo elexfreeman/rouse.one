@@ -1,12 +1,26 @@
+#cart_button {
+    .modal-header{
+      text-align: left;
+    }
+
+    .modal-container{
+      z-index: 3000;
+    }
+
+    .product-img{
+      width: 2rem;
+    }
+
+    .product-caption{
+      width: 70%;
+    }
+}
+
 header {
   padding: 20px;
   border-bottom: 1px solid #ddd;
 
-  #cart_button {
-      .modal-header{
-        text-align: left;
-      }
-  }
+
 
   .btn-group {
     .btn {

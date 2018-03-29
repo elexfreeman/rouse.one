@@ -12,27 +12,31 @@ import store from './redux/store';
 
 import './styles/main.scss';
 
+// кнопка корзины
 render(<Provider store={store}>
       <CartButton />
 </Provider>, document.getElementById('cart_button'));
 
-//// TODO: Сделать привязку с атрибутами
+// добавление товара в корзину
+let product_order = document.getElementById('product_order');
 render(<Provider store={store}>
-  <div className='product-page'>
-    <div className='product-info container'>
-      <ProductOrder productId={5} price={200}/>
-      <ProductOrder productId={1} price={200}/>
-      <ProductOrder productId={2} price={200}/>
-    </div>
-  </div>
-</Provider>, document.getElementById('cart'));
+      <ProductOrder productId={product_order.getAttribute('product_id')} price={product_order.getAttribute('price')}/>
+</Provider>, product_order);
 
+
+// список продуктов
 let products = document.getElementsByClassName('product_order_category');
-console.log('Products', products);
 
 Array.prototype.forEach.call(document.getElementsByClassName('product_order_category'), (el) => {
-  console.log(el.getAttribute('product_id'));
   render(<Provider store={store}>
     <ProductOrderCategory productId={el.getAttribute('product_id')}/>
   </Provider>, el)
 })
+
+// добавление товара в корзину
+let product_img = document.getElementById('product_img');
+render(
+<div>
+  <ProductControler />
+</div>
+  , product_img);

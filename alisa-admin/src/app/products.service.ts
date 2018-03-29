@@ -1,17 +1,18 @@
 import {Injectable} from '@angular/core';
-import {Usettings} from "./usettings";
-import {Observable} from "rxjs/Observable";
-import {HttpClient} from "@angular/common/http";
+import {Usettings} from './usettings';
+import {Observable} from 'rxjs/Observable';
+import {HttpClient} from '@angular/common/http';
 
 export interface ProductCategories {
-    id: number
-    ,caption: string
-    ,checked: number
+    id: number,
+    caption: string,
+    checked: number
 }
 
 /*данные по товару*/
 export interface Product {
     id: number;
+    price: number;
     caption: string;
     url: string;
     main_img: string;

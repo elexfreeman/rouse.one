@@ -34,6 +34,7 @@ export class ProductEditComponent implements OnInit {
             img3: '',
             img4: '',
             deleted: 0,
+            price: 0,
             categories: []
         };
 

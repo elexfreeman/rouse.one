@@ -29,8 +29,8 @@ function insert(d) {
         }
 
 
-        let sql = "INSERT INTO products (`caption`, `description`, `main_img`, `img1`, `img2`, `img3`, `img4`) " +
-            " VALUES (?, ?, ?, ?, ?, ?, ? )";
+        let sql = "INSERT INTO products (`caption`, `description` , `price`, `main_img`, `img1`, `img2`, `img3`, `img4`) " +
+            " VALUES (?, ?, ?, ?, ?, ?, ?, ? )";
         conn.query(sql, [d.caption, d.description, d.main_img, d.img1, d.img2, d.img3, d.img4], function (data, err) {
             if (!err) {
                 updateUrl(data.insertId, urlGen(data.insertId.toString() + '-' + d.caption)).then((status) => {
@@ -66,7 +66,7 @@ function get(id) {
 }
 
 function getByUrl(url) {
-  
+
     return new Promise(function (resolve, reject) {
 
         let sql = "select * from products where (url = ?) and (deleted = 0)";
@@ -107,6 +107,7 @@ function update(id, arg) {
         let sql = "UPDATE products " +
             " set caption = ? " +
             ",url = ? " +
+            ",price = ? " +
             ",main_img = ? " +
             ",description = ? " +
             ",img1 = ? " +
@@ -114,7 +115,7 @@ function update(id, arg) {
             ",img3 = ? " +
             ",img4 = ? " +
             " where id = ? ";
-        conn.query(sql, [arg.caption, arg.url, arg.main_img, arg.description, arg.img1, arg.img2, arg.img3, arg.img4, id], function (resp, err) {
+        conn.query(sql, [arg.caption, arg.url, arg.price, arg.main_img, arg.description, arg.img1, arg.img2, arg.img3, arg.img4, id], function (resp, err) {
             if (!err) {
                 resolve(true);
             } else {

@@ -1,5 +1,11 @@
 #!/usr/bin/env node
-
+const EventEmitter  = require('events');
+const myEmitter = new EventEmitter();
+myEmitter.setMaxListeners(myEmitter.getMaxListeners() + 1);
+myEmitter.once('event', () => {
+  // do stuff
+  myEmitter.setMaxListeners(Math.max(myEmitter.getMaxListeners() - 1, 0));
+});
 /**
  * Module dependencies.
  */

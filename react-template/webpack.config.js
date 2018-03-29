@@ -7,6 +7,7 @@ module.exports = {
   entry: {
     bundle: './index.jsx'
     ,product: './product.jsx'
+    ,category: './category.jsx'
     //styles: './main.scss'
   },
   output: {
@@ -101,7 +102,7 @@ module.exports = {
       filename: 'styles.css',
       allChunks: true
        /*закментить при билде*/
-      ,disable: true
+      //,disable: true
     }),
       new webpack.optimize.CommonsChunkPlugin({
        name: "common"

@@ -5,10 +5,10 @@ class ProductControler extends Component {
   constructor(props) {
     super(props);
     // берем картинку из рута
-    let root = document.getElementById('root');
-    console.log(root.getAttribute('img'))
+    let product_img = document.getElementById('product_img');
+    console.log(product_img.getAttribute('img'))
     this.state = {
-      img: root.getAttribute('img')
+      img: product_img.getAttribute('img')
     };
   }
 

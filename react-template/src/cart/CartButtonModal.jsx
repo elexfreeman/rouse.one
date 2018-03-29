@@ -5,27 +5,30 @@ import {connect} from 'react-redux';
 
 import CartModalItem from './CartModalItem'
 import {cartRemove, cartGetAll} from './Cart';
+
+
+
 // кнопка корзины в главном меню
 class CartButtonModal extends Component {
   constructor(props) {
     super(props);
-      this.onDelete = this.onDelete.bind(this);
+    this.onDelete = this.onDelete.bind(this);
   }
 
   // список товаров в корзине
   //TODO приделат подгрузку инфы с сервера по productId
-  cartList() {
-    if (this.props.cart.length > 0) {
-      return (this.props.cart[0].map((item, key) => <CartModalItem onDelete={this.onDelete} key={key} item={item}/>))
-    } else {
-      return (<div></div>);
-    }
-  }
+  // cartList() {
+  //   if (this.props.cart.length > 0) {
+  //     getCartRest().then((data) => {
+  //       this.setState({products: data.products})
+  //       //  return (data.products.map((item, key) => <CartModalItem onDelete={this.onDelete} key={key} item={item}/>))
+  //     });
+  //   }
+  // }
 
-  onDelete(productId){
+  onDelete(productId) {
     this.props.onDeletedCartItem(productId);
   }
-
 
   render() {
     return (<div>
@@ -42,20 +45,20 @@ class CartButtonModal extends Component {
               <table className="table table-striped">
                 <thead>
                   <tr>
-                    <th>Id</th>
-                  <th>p_ID</th>
-
+                    <th></th>
+                    <th>Товар</th>
+                    <th>Кол-во</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {this.cartList()}
+                  {this.props.products.map((item, key) => <CartModalItem onDelete={this.onDelete} key={key} item={item}/>)}
                 </tbody>
               </table>
 
             </div>
           </div>
           <div className="modal-footer">
-            <button className="btn">Оформить заказ</button>
+            <a href="/cart" className="btn">Перейти в корзину</a>
           </div>
         </div>
       </div>
