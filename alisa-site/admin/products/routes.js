@@ -3,6 +3,7 @@ let router = express.Router();
 
 let products = require('../../models/products');
 
+
 router.get('/getList', function (req, res, next) {
     products.getList().then((val) => {
         res.json(val);

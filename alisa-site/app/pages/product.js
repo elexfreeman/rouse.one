@@ -1,7 +1,7 @@
 let express = require('express');
 let router = express.Router();
 
-let Categories = require('../../models/categories');
+let left_menu = require('../../models/left_menu');
 let Products = require('../../models/products');
 
 
@@ -14,7 +14,7 @@ router.get('/', function (req, res, next) {
     let categories = [];
     let product = {};
 
-    Categories.getCategories().then((c) => {
+    left_menu().then((c) => {
         categories = c;
         //получаем товар
         return Products.getByUrl(Url);

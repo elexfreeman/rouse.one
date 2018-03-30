@@ -2,7 +2,7 @@ let express = require('express');
 let router = express.Router();
 let Categories = require('../../models/categories');
 let Products = require('../../models/products');
-
+let left_menu = require('../../models/left_menu');
 
 /*seo*/
 let title = 'Rouse.One - Интернет магазин экологичекий косметики';
@@ -15,7 +15,7 @@ router.get('/', function (req, res, next) {
 
   let categories = [];
 
-  Categories.getCategories().then((c) => {
+  left_menu().then((c) => {
     categories = c;
     return Products.getPopular();
 
