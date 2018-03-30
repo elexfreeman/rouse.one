@@ -1,7 +1,7 @@
 let conn = require('../db');
 
 
-
+// выбирает только с пометкой 
 function get() {
     return new Promise(function (resolve, reject) {
 
