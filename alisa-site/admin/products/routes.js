@@ -9,6 +9,26 @@ router.get('/getList', function (req, res, next) {
     });
 });
 
+router.post('/getListTable', function (req, res, next) {
+
+    let limit = req.body.length;
+    let offset = req.body.start;
+    let search = req.body.search.value;
+
+    let responseData = {};
+
+    products.getList(search, offset, limit).then((products_list) => {
+        responseData.data = products_list;
+        return products.getTotal(search);
+    }).then((total) => {
+        responseData.recordsFiltered = total;
+        responseData.recordsTotal = total;
+        responseData.draw = req.body.draw;
+        res.json(responseData);
+    });
+
+});
+
 router.post('/add', function (req, res, next) {
     let product_id = 0;
     products.insert(req.body).then((val) => {

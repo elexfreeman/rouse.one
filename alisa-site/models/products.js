@@ -86,14 +86,29 @@ function getByUrl(url) {
     });
 }
 
-function getList() {
+function getList(search, offset, limit) {
     return new Promise(function (resolve, reject) {
 
-        let sql = "select * from products where (deleted = 0) order by caption";
-        conn.query(sql, [], function (data, err) {
+        let sql = "select * from products where (deleted = 0)and(caption like ?) order by caption limit ?, ?";
+        conn.query(sql, ['%'+search+'%',offset, limit], function (data, err) {
             if (!err) {
                 data = JSON.parse(JSON.stringify(data));
                 resolve(data);
+            } else {
+                reject(err);
+            }
+        });
+    });
+}
+
+function getTotal(search) {
+    return new Promise(function (resolve, reject) {
+
+        let sql = "select count(*) cc from products where (deleted = 0)and(caption like ?) ";
+        conn.query(sql, ['%'+search+'%'], function (data, err) {
+            if (!err) {
+                data = JSON.parse(JSON.stringify(data));
+                resolve(data[0].cc);
             } else {
                 reject(err);
             }
@@ -241,6 +256,7 @@ if (module.parent) {
         , deleted: deleted
         ,getPopular: getPopular
         ,getByUrl: getByUrl
+        ,getTotal: getTotal
 
     }
 } else {
