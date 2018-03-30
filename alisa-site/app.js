@@ -64,7 +64,7 @@ app.use('/category/*', category);
 app.use('/cart', cart);
 
 app.use('/about', about);
-app.use('/admin', admin);
+app.use('/adm', admin);
 app.use('/admin/categories/', admin_categories);
 app.use('/admin/products/', admin_products);
 app.use('/admin/imgUploader/', imgUploader);
