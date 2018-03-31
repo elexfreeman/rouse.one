@@ -38,7 +38,7 @@ if(module.parent){
                         callback(rows);
                     }
                     else {
-                        console.log(query.sql); 
+                        console.log('this.sql', this.sql); //command/query
                         callback(null, err);
                     }
 

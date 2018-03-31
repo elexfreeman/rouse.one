@@ -27,12 +27,15 @@ function insert(d) {
         if (d.img4 == null) {
             d.img4 = '';
         }
+        if (d.price == null) {
+                    d.price = 0;
+                }
 
 
         let sql = "INSERT INTO products (`caption`, `description` , `price`, `main_img`, `img1`, `img2`, `img3`, `img4`) " +
             " VALUES (?, ?, ?, ?, ?, ?, ?, ? )";
-        conn.query(sql, [d.caption, d.description, d.main_img, d.img1, d.img2, d.img3, d.img4], function (data, err) {
-            console.log('this.sql', this.sql); //command/query
+        conn.query(sql, [d.caption, d.description, d.price, d.main_img, d.img1, d.img2, d.img3, d.img4], function (data, err) {
+
             if (!err) {
                 updateUrl(data.insertId, urlGen(data.insertId.toString() + '-' + d.caption)).then((status) => {
                     resolve(data.insertId);
