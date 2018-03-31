@@ -32,6 +32,7 @@ function insert(d) {
         let sql = "INSERT INTO products (`caption`, `description` , `price`, `main_img`, `img1`, `img2`, `img3`, `img4`) " +
             " VALUES (?, ?, ?, ?, ?, ?, ?, ? )";
         conn.query(sql, [d.caption, d.description, d.main_img, d.img1, d.img2, d.img3, d.img4], function (data, err) {
+            console.log(conn.query.sql);
             if (!err) {
                 updateUrl(data.insertId, urlGen(data.insertId.toString() + '-' + d.caption)).then((status) => {
                     resolve(data.insertId);

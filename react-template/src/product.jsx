@@ -31,7 +31,7 @@ Array.prototype.forEach.call(document.getElementsByClassName('product_order_cate
   render(<Provider store={store}>
     <ProductOrderCategory productId={el.getAttribute('product_id')}/>
   </Provider>, el)
-})
+});
 
 // добавление товара в корзину
 let product_img = document.getElementById('product_img');

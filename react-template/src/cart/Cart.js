@@ -1,6 +1,8 @@
 /*молудь массива корзины*/
 let cart = [];
 
+/*[{"productId":1,"count":2},{"productId":2,"count":2},{"productId":3,"count":2},{"productId":4,"count":2}]*/
+
 function init() {
     let tmp = window.localStorage.getItem('cart');
     if (tmp == null) return {};
@@ -21,7 +23,7 @@ export function cartGet(productId) {
 
     for (let key in cart) {
         /*сравниеваем offerNum*/
-        if (cart[key].productId === productId) {
+        if (parseInt(cart[key].productId) === productId) {
             /*если совпадают то присваиваем*/
             res = {
                 item: cart[key],
@@ -33,13 +35,25 @@ export function cartGet(productId) {
 }
 
 
+function cartUpdateAdd(item) {
+    init();
+    let tItem = cartGet(item.productId);
+    if (tItem == null) return false;
+    cart[tItem.item_id] = {
+        productId: item.productId
+        , count: cart[tItem.item_id].count + item.count
+    };
+    saveState();
+    return true;
+}
+
 export function cartUpdate(item) {
     init();
     let tItem = cartGet(item.productId);
     if (tItem == null) return false;
     cart[tItem.item_id] = {
-      productId: item.productId
-      ,count: cart[tItem.item_id].count+item.count
+        productId: item.productId
+        , count: parseInt(item.count)
     };
     saveState();
     return true;
@@ -48,8 +62,8 @@ export function cartUpdate(item) {
 /*добовляет элемент в корзину*/
 export function cartAdd(item) {
     init();
-    if(!cartInsert(item)){
-        cartUpdate(item);
+    if (!cartInsert(item)) {
+        cartUpdateAdd(item);
     }
 }
 

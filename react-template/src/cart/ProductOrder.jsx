@@ -25,7 +25,6 @@ class ProductOrder extends Component {
     } else {
       this.setState({count: event.target.value});
     }
-
   }
 
   addCart() {
