@@ -38,6 +38,7 @@ if(module.parent){
                         callback(rows);
                     }
                     else {
+                        console.log(query.sql); 
                         callback(null, err);
                     }
 
