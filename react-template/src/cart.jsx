@@ -34,6 +34,6 @@ render(<Provider store={store}>
 
 
 // кнопка корзины
-// render(<Provider store={store}>
-//     <CartButton />
-// </Provider>, document.getElementById('cart_button'));
+render(<Provider store={store}>
+    <CartButton />
+</Provider>, document.getElementById('cart_button'));

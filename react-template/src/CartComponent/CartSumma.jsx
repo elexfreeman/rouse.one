@@ -7,7 +7,7 @@ const CartSumma = ({products}) => {
 
     function Summa() {
         let res = 0;
-        products.map((item,key)=> (res+=item.count*item.price));
+        products.map((item)=> (res+=item.count*item.price));
         return res;
     }
 

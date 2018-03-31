@@ -13,7 +13,7 @@ class CartButton extends Component {
             count: 0
             , modalVisible: ''
             , products: []
-        }
+        };
 
         this.onCloseModal = this.onCloseModal.bind(this);
         this.onModalOpen = this.onModalOpen.bind(this);
@@ -24,7 +24,7 @@ class CartButton extends Component {
         let count = 0;
         if (this.props.cart.length > 0) {
             /* TODO узнат почему с 0 */
-            this.props.cart[0].map(function (item) {
+            this.props.cart.map(function (item) {
                 count += parseInt(item.count);
             });
         }

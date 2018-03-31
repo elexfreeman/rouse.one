@@ -20,9 +20,7 @@ export default function cart(state = [], action) {
     } else if (action.type === 'CART_GET') {
         return action.payload;
     } else if (action.type === 'CART_CHANGE_COUNT') {
-        return [
-            action.payload
-        ];
+        return  action.payload;
     }
     return state;
 }

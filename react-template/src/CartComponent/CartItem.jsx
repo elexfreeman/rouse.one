@@ -4,7 +4,7 @@ import PriceFormatter from '../formatters/PriceFormater'
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
-import {onChangeCount, onDelete} from '../redux/actions/cart';
+import {onChangeCount, onDelete, onGetCart } from '../redux/actions/cart';
 import CartItemDeleteModal from "./CartItemDeleteModal";
 
 class CartItem extends Component {
@@ -40,7 +40,10 @@ class CartItem extends Component {
         this.props.onChangeCount({
             productId: this.props.item.id
             , count: parseInt(count)
+            ,cart: this.props.products
         });
+
+        //this.props.onGetCart();
     }
 
     handlDelete() {
@@ -56,6 +59,7 @@ class CartItem extends Component {
     onDeleteProductItem(){
         this.props.onDelete(this.props.item.id);
         this.setState({modalDeleteVisible: ''});
+        this.props.onGetCart();
     }
 
     render() {
@@ -98,7 +102,7 @@ function mapStateToProps(state) {
 
 /*actions from redux*/
 function matchDispatchToProps(dispatch) {
-    return bindActionCreators({onChangeCount: onChangeCount, onDelete: onDelete}, dispatch);
+    return bindActionCreators({onChangeCount: onChangeCount, onDelete: onDelete, onGetCart: onGetCart}, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(CartItem);

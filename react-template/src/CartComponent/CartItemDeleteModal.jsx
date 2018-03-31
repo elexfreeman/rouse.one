@@ -17,16 +17,14 @@ const CartItemDeleteModal = ({visible, onClose, item, onDelete}) => {
                         <table>
                             <thead>
                             <tr>
-                                <th>Наименование</th>
-                                <th></th>
-                                <th>Цена</th>
-                                <th>Кол-во</th>
-                                <th>Сумма</th>
+                                <th/>
+                                <th/>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
-                                <td><img className='product-img' src={'http://rouse.one/' + item.main_img}/>
+                                <td>
+                                    <img className='product-img' src={'http://rouse.one/' + item.main_img}/>
                                 </td>
                                 <td>{item.caption}</td>
                             </tr>

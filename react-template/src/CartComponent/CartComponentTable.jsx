@@ -1,6 +1,5 @@
 import React from 'react';
 import CartItem from "./CartItem";
-import {getCartRest} from "../models/cart_model";
 
 /*this.props.visible = 'active'*/
 const CartComponentTable = ({products}) => {
@@ -32,7 +31,7 @@ const CartComponentTable = ({products}) => {
             </tr>
             </thead>
             <tbody>
-            {products.map((item, key)=>  <CartItem item={item}  key={key}/>)}
+            {products.map((item, key)=>  <CartItem products={products} item_key={key} item={item}  key={key}/>)}
             </tbody>
         </table>
    )
