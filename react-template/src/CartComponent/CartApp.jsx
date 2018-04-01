@@ -1,16 +1,27 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router'
+import {Route, Switch} from 'react-router-dom'
 
 import CartComponent from "./CartComponent";
 import DeliveryComponent from "./DeliveryComponent";
 
-const CartApp = () => (
-    <div>
-        <main>
-            <Route path="/" component={CartComponent}/>
-            <Route path="/delivery" component={DeliveryComponent}/>
-        </main>
-    </div>
-);
+const CartApp = () => {
 
-export default  CartApp;
+    /*проверяем url*/
+    let url_prifix = '/cart/';
+    let url_main = '/cart';
+    if(window.location.host == 'localhost:8080') {
+        url_prifix = '/';
+        url_main = '/'
+    }
+    return (
+
+        <div>
+            <Switch>
+                <Route exact path={url_main} component={CartComponent}/>
+                <Route path={url_prifix + 'delivery'} component={DeliveryComponent}/>
+            </Switch>
+        </div>
+    )
+};
+
+export default CartApp;

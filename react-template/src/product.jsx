@@ -11,6 +11,11 @@ import ProductOrderCategory from './cart/ProductOrderCategory';
 import store from './redux/store';
 
 import './styles/main.scss';
+import {onGetCart} from "./redux/actions/cart";
+
+// Корзина
+/*загружаем ее*/
+store.dispatch(onGetCart());
 
 // кнопка корзины
 render(<Provider store={store}>
@@ -27,7 +32,7 @@ render(<Provider store={store}>
 // список продуктов
 let products = document.getElementsByClassName('product_order_category');
 
-Array.prototype.forEach.call(document.getElementsByClassName('product_order_category'), (el) => {
+Array.prototype.forEach.call(products, (el) => {
   render(<Provider store={store}>
     <ProductOrderCategory productId={el.getAttribute('product_id')}/>
   </Provider>, el)

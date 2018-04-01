@@ -1,16 +1,17 @@
 import React from 'react';
-import {render} from 'react-dom';
 import {Provider} from 'react-redux';
-
-import ProductControler from './controlers/ProductControler';
-
-import ProductOrder from './cart/ProductOrder';
+import {render} from 'react-dom';
 import CartButton from './cart/CartButton';
 import ProductOrderCategory from './cart/ProductOrderCategory';
 
 import store from './redux/store';
 
 import './styles/main.scss';
+import {onGetCart} from "./redux/actions/cart";
+// Корзина
+/*загружаем ее*/
+store.dispatch(onGetCart());
+
 
 render(<Provider store={store}>
       <CartButton />
@@ -27,11 +28,9 @@ render(<Provider store={store}>
 // </Provider>, document.getElementById('cart'));
 
 let products = document.getElementsByClassName('product_order_category');
-console.log('Products', products);
+Array.prototype.forEach.call(products, (el) => {
 
-Array.prototype.forEach.call(document.getElementsByClassName('product_order_category'), (el) => {
-  console.log(el.getAttribute('product_id'));
   render(<Provider store={store}>
     <ProductOrderCategory productId={el.getAttribute('product_id')}/>
   </Provider>, el)
-})
+});

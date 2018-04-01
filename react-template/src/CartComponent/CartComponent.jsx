@@ -11,9 +11,12 @@ const CartComponent = ({cart}) => {
 
     return (<div className='cart-component'>
         <div className='container'>
-            <Link to="/delivery">delivery</Link>
             <CartComponentTable products={cart}/>
             <CartSumma products={cart}/>
+            <div className='next-button-container'>
+                <Link to="/delivery"><button className='btn btn-primary'>
+                    К доставке <i className="icon icon-arrow-right" /></button></Link>
+            </div>
         </div>
     </div>)
 

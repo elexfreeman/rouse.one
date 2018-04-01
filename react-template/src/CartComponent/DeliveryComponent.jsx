@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {getCartRest} from '../models/cart_model';
 
 
-import CartItem from "./CartItem";
+import ScrollToTopOnMount from "../base/ScrollToTop";
 import CartSumma from "./CartSumma";
 
 
@@ -42,6 +42,7 @@ class DeliveryComponent extends Component {
     render() {
 
         return (<div className='cart-component'>
+            <ScrollToTopOnMount />
           <h1>Доставка</h1>
 
         </div>)
