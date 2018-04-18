@@ -1,15 +1,21 @@
-import {cartUpdate, cartGetAll, cartRemove} from '../../cart/Cart';
+import {cartUpdate, cartGetAll, cartRemove, cartAdd} from '../../cart/Cart';
 
 import {getCartRest} from '../../models/cart_model';
 
-export const onAddCart = (item) => dispatch => {
-    dispatch({
-        type: 'ADD_CART',
-        payload: item
+/*событие добавления в корзину*/
+export const onAddCart = (args) => dispatch => {
+    /*превращаем все в int*/
+    cartAdd({
+        productId: args.productId,
+        count: args.count
+    });
+
+    getCartRest().then((data) => {
+        dispatch({type: 'ADD_CART', payload: data.products})
     });
 };
 
-
+/*ифа о корзине*/
 export const onGetCart = () => dispatch => {
     getCartRest().then((data) => {
         dispatch({type: 'CART_GET', payload: data.products})
@@ -17,6 +23,7 @@ export const onGetCart = () => dispatch => {
 };
 
 
+/*изменение кол-ва тавара в корзине*/
 export const onChangeCount = (args) => {
     /*обновляем localStorage*/
     cartUpdate({productId: args.productId, count: args.count});
@@ -35,6 +42,7 @@ export const onChangeCount = (args) => {
     }
 };
 
+/*удаление*/
 export const onDelete = (productId) => {
     cartRemove(productId);
 

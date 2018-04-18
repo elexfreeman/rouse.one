@@ -10,9 +10,7 @@ const initialState = [tmp];
 
 export default function cart(state = [], action) {
     if (action.type === 'ADD_CART') {
-        return [
-            action.payload
-        ];
+        return action.payload;
     } else if (action.type === 'CART_DELETE') {
         return [
             action.payload

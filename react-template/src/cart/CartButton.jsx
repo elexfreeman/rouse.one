@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 
 import CartButtonModal from './CartButtonModal';
 import {getCartRest} from '../models/cart_model';
+import {bindActionCreators} from "redux";
+
 
 // кнопка корзины в главном меню
 class CartButton extends Component {
@@ -21,9 +23,9 @@ class CartButton extends Component {
 
     // при изменнинии стейта в Redux выдает кол-во товаров в корзине
     cartCount() {
+        console.log(this.props.cart);
         let count = 0;
         if (this.props.cart.length > 0) {
-            /* TODO узнат почему с 0 */
             this.props.cart.map(function (item) {
                 count += parseInt(item.count);
             });
@@ -50,16 +52,32 @@ class CartButton extends Component {
 
     render() {
         return (<span>
-        <CartButtonModal products={this.state.products} modalVisible={this.state.modalVisible}
-                         onClose={this.onCloseModal}/>
-      <button onClick={this.onModalOpen} className="btn-cart btn input-group-btn btn-lg badge"
-              data-badge={this.cartCount()}>
-        <i className="fa fa-shopping-cart" aria-hidden="true" />
+        <CartButtonModal
+            products={this.state.products}
+            modalVisible={this.state.modalVisible}
+            onClose={this.onCloseModal}/>
+      <button
+          onClick={this.onModalOpen}
+          className="btn-cart btn input-group-btn btn-lg badge"
+          data-badge={this.cartCount()}>
+        <i className="fa fa-shopping-cart" aria-hidden="true"/>
       </button>
 
     </span>)
     }
-
 }
 
-export default connect(state => ({cart: state.cart}), dispatch => ({}))(CartButton);
+
+/*props from redux*/
+function mapStateToProps(state) {
+    return {
+        cart: state.cart
+    }
+}
+
+/*actions from redux*/
+function matchDispatchToProps(dispatch) {
+    return bindActionCreators({}, dispatch);
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(CartButton);

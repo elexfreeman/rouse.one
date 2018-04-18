@@ -5,8 +5,12 @@ import {rest_server} from './settings';
 export function getCartRest() {
   // формируем массив из localStorage
   let data = window.localStorage.getItem('cart');
-  if (data == null) data = {};
-  data = JSON.parse(data);
+  if (data == null) {
+    data = [];
+  } else {
+      data = JSON.parse(data);
+  }
+
     return new Promise(function (resolve, reject) {
       $.ajax({
         type: "POST", url: rest_server + "cart/get",

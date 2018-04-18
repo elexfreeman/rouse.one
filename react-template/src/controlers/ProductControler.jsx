@@ -26,7 +26,7 @@ class ProductControler extends Component {
 
   render() {
     return ( <div>
-      <img className="img-responsive" id="zoom_01"   data-zoom-image={this.state.img} src={this.state.img} / >
+      <img className="img-responsive" id="zoom_01"   data-zoom-image={this.state.img} src={this.state.img} />
 
       </div>)
     }

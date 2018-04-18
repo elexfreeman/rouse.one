@@ -23,7 +23,7 @@ export function cartGet(productId) {
 
     for (let key in cart) {
         /*сравниеваем offerNum*/
-        if (parseInt(cart[key].productId) === productId) {
+        if (parseInt(cart[key].productId) === parseInt(productId)) {
             /*если совпадают то присваиваем*/
             res = {
                 item: cart[key],
@@ -40,8 +40,8 @@ function cartUpdateAdd(item) {
     let tItem = cartGet(item.productId);
     if (tItem == null) return false;
     cart[tItem.item_id] = {
-        productId: item.productId
-        , count: cart[tItem.item_id].count + item.count
+        productId: parseInt(item.productId)
+        , count: cart[tItem.item_id].count + parseInt(item.count)
     };
     saveState();
     return true;
@@ -52,7 +52,7 @@ export function cartUpdate(item) {
     let tItem = cartGet(item.productId);
     if (tItem == null) return false;
     cart[tItem.item_id] = {
-        productId: item.productId
+        productId: parseInt(item.productId)
         , count: parseInt(item.count)
     };
     saveState();
@@ -72,7 +72,10 @@ function cartInsert(item) {
     init();
     let tItem = cartGet(item.productId);
     if (tItem == null) {
-        cart.push(item);
+        cart.push({
+            productId: parseInt(item.productId)
+            , count: parseInt(item.count)
+        });
         saveState();
         return true;
     } else {

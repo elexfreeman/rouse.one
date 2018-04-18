@@ -6,40 +6,46 @@ let left_menu = require('../models/left_menu');
 let Products = require('../models/products');
 
 /* GET home page. */
-router.post('/get', function(req, res, next) {
+router.post('/get', function (req, res, next) {
 
-  if (req.body.cart == null) {
-    res.json({'error': 1, 'products': {}});
-  } else {
-    // перебераем cart
-    let to_model = req.body.cart.map((item, key) => {
-      console.log(typeof item.productId);
-      if (typeof item.productId == 'string') {
-        return parseInt(item.productId);
-      }else if (typeof item.productId == 'number') {
-        return item.productId;
-      } else {
-        return 0;
-      }
-    });
+    if (req.body.cart == null) {
+        res.json({'error': 1, 'products': {}});
+    } else {
+        // перебераем cart
+        let to_model = req.body.cart.map((item, key) => {
 
-    let cart_resp_products = [];
-    cart_model.get(to_model).then((products) => {
-      // собираем продукты
-      cart_resp_products = products.map((product, key) => {
-
-        // проставляем кол-во
-        req.body.cart.map((item_b, key) => {
-          if (parseInt(item_b.productId) == product.id) {
-            product.count = item_b.count;
-          }
+            if (typeof item.productId == 'string') {
+                return parseInt(item.productId);
+            } else if (typeof item.productId == 'number') {
+                return item.productId;
+            } else {
+                return 0;
+            }
         });
 
-        return product;
-      });
-      res.json({'error': 0, 'products': cart_resp_products});
-    });
-  }
+        let cart_resp_products = [];
+        /*если есть продукты в корзине*/
+        if (to_model.length > 0) {
+            cart_model.get(to_model).then((products) => {
+                // собираем продукты
+                cart_resp_products = products.map((product, key) => {
+
+                    // проставляем кол-во
+                    req.body.cart.map((item_b, key) => {
+                        if (parseInt(item_b.productId) == product.id) {
+                            product.count = item_b.count;
+                        }
+                    });
+
+                    return product;
+                });
+                res.json({'error': 0, 'products': cart_resp_products});
+            });
+        } else {
+            res.json({'error': 0, 'products': cart_resp_products});
+        }
+
+    }
 
 });
 
@@ -64,8 +70,8 @@ router.get('/', function (req, res, next) {
         let keywords = '';
 
 
-        if( typeof product.description ==='string')
-            product.description = product.description.replace(/\r\n|\r|\n/g,"<br />");
+        if (typeof product.description === 'string')
+            product.description = product.description.replace(/\r\n|\r|\n/g, "<br />");
 
         res.render('cart_page/index', {
             title: title
